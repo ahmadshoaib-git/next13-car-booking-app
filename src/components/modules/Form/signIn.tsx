@@ -1,11 +1,10 @@
 'use client';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Button } from '../ui/button';
-import { Form, FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage } from '../ui/form';
-import { Input } from '../ui/input';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 const formSchema = z.object({
     email: z.string().min(2, {
@@ -16,7 +15,7 @@ const formSchema = z.object({
     }),
 });
 
-const Login = () => {
+const SignInForm = () => {
     const form: any = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -33,16 +32,15 @@ const Login = () => {
     }
     return (
         <>
-            <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="max-w-[20rem] w-[20rem] flex-col gap-[3rem]">
+            <Form autoComplete="off" {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="w-full flex-col gap-[3rem]">
                     <FormField
                         control={form.control}
                         name="email"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Email</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="shadcn" {...field} />
+                                    <Input placeholder="Email" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
@@ -53,15 +51,14 @@ const Login = () => {
                         name="password"
                         render={({ field }) => (
                             <FormItem>
-                                <FormLabel>Password</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="shadcn" type="password" {...field} />
+                                    <Input placeholder="Password" type="password" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>
                         )}
                     />
-                    <Button type="submit" className="w-[100%] mt-[2rem]">
+                    <Button type="submit" className="w-[100%] mt-[1rem]">
                         Submit
                     </Button>
                 </form>
@@ -70,5 +67,5 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default SignInForm;
 
