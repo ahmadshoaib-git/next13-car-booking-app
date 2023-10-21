@@ -2,7 +2,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { useForm } from 'react-hook-form';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
@@ -25,11 +25,19 @@ const SignInForm = () => {
     });
 
     // 2. Define a submit handler.
-    function onSubmit(values: z.infer<typeof formSchema>) {
+    const onSubmit = async (values: z.infer<typeof formSchema>) => {
         // Do something with the form values.
         // ✅ This will be type-safe and validated.
-        console.log(values);
-    }
+        // console.log(values);
+        const response = await fetch('/api/auth/register', {
+            method: 'POST',
+            body: JSON.stringify({
+                email: values.email,
+                password: values.password,
+            }),
+        });
+        console.log({ response });
+    };
     return (
         <>
             <Form autoComplete="off" {...form}>
