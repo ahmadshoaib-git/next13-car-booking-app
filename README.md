@@ -61,3 +61,9 @@ Modify build script to
     }
     ```
 
+### Global Instance of our connection
+
+` lib > prisma.ts`
+
+Creates global instance of our prisma connection
+
