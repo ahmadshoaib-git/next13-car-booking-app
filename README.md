@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Next13 Car Booking App
 
-## Getting Started
+Following were the technologies used:
 
-First, run the development server:
+1. NextJS
+2. ReactJS
+3. TypeScript
+4. React Hook Forms
+5. TailwindCss
+6. lucide-react
+7. react-tsparticles
+8. Zod
+9. next-auth
+10. Prisma
+11. ts-node
+12. Supabase
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Prisma Installation
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. npm i -D prisma
+2. npm i @prisma/client
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Initialize Prisma
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+npx prism init
+This will create all a folder called prisma and set defaults needed for the project.
 
-## Learn More
+### Create Prisma Migration
 
-To learn more about Next.js, take a look at the following resources:
+npx prisma migrate dev --name init
+It will create db migrations.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Build
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Modify build script to
+{"build": "prisma generate && next build"}
 
-## Deploy on Vercel
+### Seed the database via Prisma
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. npm i -D ts-node
+   This will let us execute the node script but the script is written in typescript
+2. Add the following prisma script in package.json to execute your seed.ts file, to seed data into database.
+   {"prisma": {
+   "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
+   }}
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
