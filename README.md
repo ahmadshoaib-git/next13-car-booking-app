@@ -14,6 +14,7 @@ Following were the technologies used:
 10. Prisma
 11. ts-node
 12. Supabase
+13. bcryptjs
 
 ### Supabase DB URL String generation
 
