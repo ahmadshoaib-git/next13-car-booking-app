@@ -34,7 +34,8 @@ Here replace your password with the password that was generated at the time of c
 
 ### Initialize Prisma
 
-npx prism init
+`npx prism init`
+
 This will create all a folder called prisma and set defaults needed for the project.
 
 ### Create Prisma Migration
