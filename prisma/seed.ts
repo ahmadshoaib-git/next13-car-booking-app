@@ -10,7 +10,7 @@ async function main() {
             email: 'abc@yopmail.com',
             firstName: 'ABC',
             lastName: 'User',
-            password: '!Adbc1100',
+            password: '$2b$10$HcH1pj2pcIOadmCTBbyRFe97mucQd8vAIXpOYylNQamhuSzfw/eNi', // !Adbc1100
         },
     });
     console.log({ user });
