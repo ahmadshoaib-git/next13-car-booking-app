@@ -1,6 +1,8 @@
 import Image from 'next/image';
+import { RefreshCcw } from 'lucide-react';
 import SignInForm from '@/components/modules/Form/signIn';
 import Particle from '@/components/modules/Particles/index';
+import Link from 'next/link';
 
 const SignIn = () => {
     return (
@@ -13,9 +15,20 @@ const SignIn = () => {
                 </div>
             </div>
             <div className="h-full w-full flex items-center justify-center">
-                <div className="shadow-sm border rounded-lg max-w-[20rem] w-full p-[1.5rem] z-[2] bg-slate-100/[.6]">
-                    <h2 className="text-center uppercase pb-[1rem]">Sign In</h2>
-                    <SignInForm />
+                <div className="flex-col items-center justify-center">
+                    <div className="shadow-sm border rounded-lg max-w-[20rem] w-full p-[1.5rem] z-[2] bg-slate-100/[.6]">
+                        <h2 className="text-center uppercase pb-[1rem] font-semibold">Sign In</h2>
+                        <SignInForm />
+                    </div>
+                    <div className="mt-[1rem]">
+                        <p className="text-md font-normal leading-6">
+                            Dont have account?{' '}
+                            <Link href="/signup" className="font-semibold text-slate-800 hover:underline">
+                                Click here
+                            </Link>{' '}
+                            to register.
+                        </p>
+                    </div>
                 </div>
             </div>
         </main>

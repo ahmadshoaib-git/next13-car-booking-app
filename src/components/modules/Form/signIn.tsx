@@ -1,10 +1,13 @@
 'use client';
+import React from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { useForm } from 'react-hook-form';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { RefreshCcw } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 const formSchema = z.object({
     email: z.string().min(2, {
@@ -16,6 +19,8 @@ const formSchema = z.object({
 });
 
 const SignInForm = () => {
+    const [loader, setLoader] = React.useState(false);
+    const { replace } = useRouter();
     const form: any = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -29,13 +34,19 @@ const SignInForm = () => {
         // Do something with the form values.
         // ✅ This will be type-safe and validated.
         // console.log(values);
-        const response = await fetch('/api/auth/register', {
+        setLoader(true);
+        const response = await fetch('/api/auth/signin', {
             method: 'POST',
             body: JSON.stringify({
                 email: values.email,
                 password: values.password,
             }),
         });
+        if (response.statusText === 'OK') {
+            // toast.success(`User verified and logged in successfully!`);
+            replace('/');
+        }
+        setLoader(false);
         console.log({ response });
     };
     return (
@@ -67,7 +78,8 @@ const SignInForm = () => {
                         )}
                     />
                     <Button type="submit" className="w-[100%] mt-[1rem]">
-                        Submit
+                        <span className="mr-[0.25rem]">Submit</span>
+                        <span className="text-white">{loader && <RefreshCcw className="text-2xl rotate-circular-sm" />}</span>
                     </Button>
                 </form>
             </Form>
