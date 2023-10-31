@@ -62,10 +62,17 @@ Modify build script to
     "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
     }
     ```
+3. In order to seed data to DB, run following command:
+
+    `npx prisma db seed`
 
 ### Global Instance of our connection
 
 ` lib > prisma.ts`
 
 Creates global instance of our prisma connection
+
+#### Inspirations
+
+1. https://github.com/ethanmick/prisma-next-postgres-example/tree/main
 
