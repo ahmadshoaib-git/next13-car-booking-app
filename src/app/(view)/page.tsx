@@ -1,6 +1,5 @@
 import Logout from '@/components/modules/Form/logout';
-import { prisma } from '../../lib/prisma';
-
+import { prisma } from '../../../lib/prisma';
 export default async function Home() {
     const user = await prisma.user.findFirst({
         where: {

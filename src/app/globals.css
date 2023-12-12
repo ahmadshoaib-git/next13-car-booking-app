@@ -33,6 +33,18 @@
         --ring: 222.2 84% 4.9%;
 
         --radius: 0.5rem;
+
+        --whiteGrey: #f4f4f6;
+        --lightGrey: #e4e5eb;
+        --darkGrey: #999;
+        --smoke: #e3e3e3;
+        --darkBlue: #232f3e;
+        --black: #131a22;
+        --cartRed: #ff4747;
+        --cartRedLowOpacity: rgba(255, 71, 71, 0.2);
+        --lightOrange: #ffece3;
+        --blue: #0000ff;
+        --yellow: #f4c430;
     }
 
     .dark {
