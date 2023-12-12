@@ -62,7 +62,7 @@ export async function POST(req: Request) {
     try {
         const body = (await req.json()) as LoginUserInput;
         console.log('============== >>> ', body);
-        const allowedOrigin = req.headers.get('origin');
+        // const allowedOrigin = req.headers.get('origin');
         const { email, password } = body;
         const isValid = userValidator.safeParse({ email, password });
 
