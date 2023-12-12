@@ -28,3 +28,9 @@ export function getErrorResponse(status: number = 500, message: string, errors: 
     );
 }
 
+export const getFirstLastName = (name: string, getIndex: number) => {
+    if (!name) return '';
+    if (name.trim().length === 0) return '';
+    return name.split(' ')[getIndex];
+};
+
