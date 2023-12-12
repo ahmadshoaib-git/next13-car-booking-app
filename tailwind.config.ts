@@ -1,7 +1,8 @@
 import type { Config } from 'tailwindcss';
+const colors = require('tailwindcss/colors');
 
 const config: Config = {
-    content: ['./src/pages/**/*.{js,ts,jsx,tsx,mdx}', './src/components/**/*.{js,ts,jsx,tsx,mdx}', './src/app/**/*.{js,ts,jsx,tsx,mdx}'],
+    content: ['./src/pages/**/*.{js,ts,jsx,tsx,mdx}', './src/components/**/*.{js,ts,jsx,tsx,mdx}', './src/app/**/*.{js,ts,jsx,tsx,mdx}', '!./node_modules'],
     theme: {
         screens: {
             xs: '30rem',
@@ -65,16 +66,17 @@ const config: Config = {
         },
         extend: {
             colors: {
-                whiteGrey: '#f4f4f6',
-                lightGrey: '#e4e5eb',
-                darkGrey: '#999',
-                smoke: '#E3E3E3',
-                darkBlue: '#232F3E',
-                black: '#131A22',
-                cartRed: '#ff4747',
-                cartRedLowOpacity: 'rgba(255,71,71,0.2)',
-                lightOrange: '#ffece3',
-                blue: '#0000ff',
+                whiteGrey: 'var(--whiteGrey)',
+                lightGrey: 'var(--lightGrey)',
+                darkGrey: 'var(--darkGrey)',
+                smoke: 'var(--smoke)',
+                darkBlue: 'var(--darkBlue)',
+                black: 'var(--black)',
+                cartRed: 'var(--cartRed)',
+                cartRedLowOpacity: 'var(--cartRedLowOpacity)',
+                lightOrange: 'var(--lightOrange)',
+                blue: 'var(--blue)',
+                yellow: 'var(--yellow)',
                 border: 'hsl(var(--border))',
                 input: 'hsl(var(--input))',
                 ring: 'hsl(var(--ring))',
@@ -116,12 +118,12 @@ const config: Config = {
             },
             keyframes: {
                 'accordion-down': {
-                    from: { height: 0 },
+                    from: { height: '0' },
                     to: { height: 'var(--radix-accordion-content-height)' },
                 },
                 'accordion-up': {
                     from: { height: 'var(--radix-accordion-content-height)' },
-                    to: { height: 0 },
+                    to: { height: '0' },
                 },
             },
             animation: {
@@ -144,6 +146,12 @@ const config: Config = {
         },
     },
     plugins: [require('tailwindcss-animate')],
+    // safelist: ['bg-whiteGrey', 'text-whiteGrey', 'bg-lightGrey', 'text-lightGrey', 'bg-smoke', 'text-smoke', 'bg-yellow', 'text-yellow'],
+    safelist: [
+        {
+            pattern: /(bg|text|border)-(Yellow|smoke)/,
+        },
+    ],
 };
 export default config;
 
